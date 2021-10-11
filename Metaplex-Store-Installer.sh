@@ -54,7 +54,7 @@ if [ $? = 0 ]; then
     if [ $? = 0 ]; then
       #Ask user if they want to run locally first or go into build and deploy.
       read -p "Do you want to run metaplex locally first (y/N)? " CHOICE
-      if [ ${CHOICE} == "n" ] || [ ${CHOICE} == "N" ]; then
+      if [ ${CHOICE} = "n" ] || [ ${CHOICE} = "N" ]; then
         echo "Metaplex will now be built and deployed. Have your github account and access code ready."
         yarn build
         if [ $? = 0 ]; then
