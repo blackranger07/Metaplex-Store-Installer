@@ -62,6 +62,8 @@ if [ $? = 0 ]; then
           yarn deploy
           if [ $? = 0 ]; then
             echo "Your metaplex store is now ready to be used at the site you used during the install process."
+            echo "If you found this installer helpful and want to support with SOL"
+            echo "Donate SOL: 9inpsvQZYiTekRJEuNBLjPjNoQzSCDx9iuHMq3uTzssB"
           fi
         else
           echo "The command (yarn build) had an issue, please investigate."
