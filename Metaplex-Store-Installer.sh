@@ -61,6 +61,7 @@ if [ $? = 0 ]; then
           cd packages/web
           yarn deploy
           if [ $? = 0 ]; then
+            clear
             echo "Your metaplex store is now ready to be used at the site you used during the install process."
             echo "If you found this installer helpful and want to support with SOL"
             echo "Donate SOL: 9inpsvQZYiTekRJEuNBLjPjNoQzSCDx9iuHMq3uTzssB"
