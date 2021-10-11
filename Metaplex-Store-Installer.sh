@@ -9,10 +9,10 @@
 #IMPORTANT! - Place file into cloned Metaplex directory /home/yourusername/metaplex prior to running.
 
 filechanges () {
-  #Edit packages.json file at line 50
+  #Edit package.json file at line 49
   echo "Preparing to change the owner name of the repository for Metaplex."
   read -p "Enter your github name: " GITHUB
-  sed -i 's/metaplex-foundation/${GITHUB}/g' js/packages/web/packages.json
+  sed -i 's/metaplex-foundation/'${GITHUB}'/g' js/packages/web/package.json
   #Add wallet address in .env file.
   read -p "Paste the wallet address for the store owner: " WALLET
   cat > js/packages/web/.env <<EOF
@@ -54,7 +54,7 @@ if [ $? = 0 ]; then
     if [ $? = 0 ]; then
       #Ask user if they want to run locally first or go into build and deploy.
       read -p "Do you want to run metaplex locally first (y/N)? " CHOICE
-      if [ ${CHOICE} == "y" ] || [ ${CHOICE} == "Y" ]; then
+      if [ ${CHOICE} == "n" ] || [ ${CHOICE} == "N" ]; then
         echo "Metaplex will now be built and deployed. Have your github account and access code ready."
         yarn build
         if [ $? = 0 ]; then
