@@ -10,6 +10,7 @@
 
 filechanges () {
   #Edit package.json file at line 49
+  clear
   echo "Preparing to change the owner name of the repository for Metaplex."
   read -p "Enter your github name: " GITHUB
   sed -i 's/metaplex-foundation/'${GITHUB}'/g' js/packages/web/package.json
