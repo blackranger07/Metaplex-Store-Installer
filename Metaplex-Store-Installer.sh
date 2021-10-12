@@ -60,6 +60,14 @@ if [ $? = 0 ]; then
         yarn build
         if [ $? = 0 ]; then
           cd packages/web
+            #Ask user if they have set their Github identity before, get info and set if not.
+            read -p "Have you set your GitHub default identity? (y/N)" IDENTITY
+            if [ ${IDENTITY} = "n" ] || [ ${IDENTITY} = "N" ]; then
+              read -p "Enter your email address that is used for Github: " EMAIL
+              read -p "Enter your Github User Name: " USER
+              git config --global user.email "${EMAIL}"
+              git config --global user.name "${USER}"
+            fi
           yarn deploy
           if [ $? = 0 ]; then
             clear
