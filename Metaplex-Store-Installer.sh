@@ -12,7 +12,7 @@ clear #Start the screen fresh.
 current_dir=$(pwd)
 GITHUB=""
 SITENAME=""
-asset_pfix_new="ASSET_PREFIX= "
+asset_pfix_new="ASSET_PREFIX="
 asset_pfix_old="ASSET_PREFIX=/metaplex/"
 
 #Functions Here
@@ -89,10 +89,12 @@ if [ $? = 0 ]; then
         yarn deploy
         if [ $? = 0 ]; then
           clear
-          echo "Your metaplex store is now ready to be used at: ${SITENAME}."
-          echo "If you found this installer helpful and want to support with SOL"
-          echo "" #Adding space
-          echo "Donate SOL: 9inpsvQZYiTekRJEuNBLjPjNoQzSCDx9iuHMq3uTzssB"
+          echo "************************************************************************"
+          echo "* Your metaplex store is now ready to be used at: ${SITENAME}   *"
+          echo "* If you found this installer helpful please support with SOL.         *"
+          echo "*                                                                      *"
+          echo "*    Donate SOL: 9inpsvQZYiTekRJEuNBLjPjNoQzSCDx9iuHMq3uTzssB          *"
+          echo "************************************************************************"
         fi
       else
           clear
