@@ -15,17 +15,17 @@ filechanges () {
   clear
   echo "Preparing to change the owner name of the repository for Metaplex."
   read -p "Enter your github name: " GITHUB
-  sed -i 's/metaplex-foundation/'${GITHUB}'/g' js/packages/web/package.json
+  sed -i 's/metaplex-foundation/'${GITHUB}'/g' ${current_dir}/metaplex/js/packages/web/package.json
   #Add wallet address in .env file.
   read -p "Paste the wallet address for the store owner: " WALLET
-  cat > js/packages/web/.env <<EOF
+  cat > ${current_dir}/metaplex/js/packages/web/.env <<EOF
   REACT_APP_STORE_OWNER_ADDRESS_ADDRESS=${WALLET}
   REACT_APP_STORE_ADDRESS=
 EOF
   #Add CNAME
-  touch js/packages/web/public/CNAME
+  touch ${current_dir}/metaplex/js/packages/web/public/CNAME
   read -p "Enter your CNAME or website name that will point to github pages: " SITENAME
-  echo ${SITENAME} > js/packages/web/public/CNAME
+  echo ${SITENAME} > ${current_dir}/metaplex/js/packages/web/public/CNAME
 }
 
 #Download latest metaplex-foundation/metaplex repository.
