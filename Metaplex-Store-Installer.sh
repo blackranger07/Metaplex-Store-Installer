@@ -3,19 +3,26 @@
 #**********************************************
 #          Metaplex Store Installer           *
 # Created By: BlackRanger07                   *
-# Copyright: BlackRanger07 - 2021             *
+# Copyright: BlackRanger07 - Oct 2021         *
 #**********************************************
 
-#Save the working directory
+clear #Start the screen fresh.
+
+#Reused variables
 current_dir=$(pwd)
+GITHUB=""
+SITENAME=""
+asset_pfix_new="ASSET_PREFIX= "
+asset_pfix_old="ASSET_PREFIX=/metaplex/"
 
 #Functions Here
 filechanges () {
   #Edit packages.json file at line 47
   clear
-  echo "Preparing to change the owner name of the repository for Metaplex."
-  read -p "Enter your github name: " GITHUB
+  #Change the owner name of the repository for Metaplex."
   sed -i 's/metaplex-foundation/'${GITHUB}'/g' ${current_dir}/metaplex/js/packages/web/package.json
+  #Modify Asset Prefix in package.json line 56.
+  sed -i "s|${asset_pfix_old}|${asset_pfix_new}|" ${current_dir}/metaplex/js/packages/web/package.json
   #Add wallet address in .env file.
   read -p "Paste the wallet address for the store owner: " WALLET
   cat > ${current_dir}/metaplex/js/packages/web/.env <<EOF
@@ -28,9 +35,10 @@ EOF
   echo ${SITENAME} > ${current_dir}/metaplex/js/packages/web/public/CNAME
 }
 
-#Download latest metaplex-foundation/metaplex repository.
+#Clone the Metaplex Repo from the Users Github repository.
+read -p "Enter your github name: " GITHUB
 if [ ! -d ${current_dir}/metaplex ]; then
-  git clone https://github.com/metaplex-foundation/metaplex.git
+  git clone https://github.com/"${GITHUB}"/metaplex.git
 fi
 
 # Prerequisites for Metaplex Store to be installed.
@@ -70,7 +78,7 @@ if [ $? = 0 ]; then
       if [ $? = 0 ]; then
         cd packages/web
         #Ask user if they have set their Github identity before, get info and set if not.
-        read -p "Have you set your GitHub default identity? (y/N)" IDENTITY
+        read -p "Have you set your GitHub default identity? (y/N) " IDENTITY
         if [ ${IDENTITY} = "n" ] || [ ${IDENTITY} = "N" ]; then
           read -p "Enter your email address that is used for Github: " EMAIL
           read -p "Enter your Github User Name: " USER
@@ -81,7 +89,7 @@ if [ $? = 0 ]; then
         yarn deploy
         if [ $? = 0 ]; then
           clear
-          echo "Your metaplex store is now ready to be used at the site you used during the install process."
+          echo "Your metaplex store is now ready to be used at: ${SITENAME}."
           echo "If you found this installer helpful and want to support with SOL"
           echo "" #Adding space
           echo "Donate SOL: 9inpsvQZYiTekRJEuNBLjPjNoQzSCDx9iuHMq3uTzssB"
