@@ -4,7 +4,7 @@ Linux Installer for Metaplex Store using Solana.
 #IMPORTANT! - Run as root user.
 
 * Fork the metaplex-foundation/metaplex repository to your github.
-* Clone the blackranger07/Metaplex-Store-Installer repository to your linux machine via CLI.
+* Run the installer. It will clone the metaplex repository from your github and perform necessary changes.
 
 Make the Metaplex-Store-Installer.sh executable:
 
