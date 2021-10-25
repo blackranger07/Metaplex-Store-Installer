@@ -14,4 +14,4 @@ Make the Metaplex-Store-Installer.sh executable:
 
 3.) Follow the prompts
 
-4.) Enjoy site.
+4.) Wait for about 5 mins for site to show up and then get to Minting.
