@@ -51,7 +51,7 @@ if [ $? = 0 ]; then
     sudo apt install -y nodejs
   else
     clear
-    echo "Nodejs did not install! Please Investigate."
+    echo "Nodejs did not download properly! Please Investigate."
     exit 1
   fi
 else
