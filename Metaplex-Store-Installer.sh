@@ -16,6 +16,15 @@ asset_pfix_new="ASSET_PREFIX="
 asset_pfix_old="ASSET_PREFIX=/metaplex/"
 
 #Functions Here
+user_status () {
+   ID=$(/usr/bin/id -u)
+   if [ ${ID} -ne 0 ] && [ whoami != "root" ]; then
+      echo "You don't possess the power of Root!"
+      echo "You must be Root user to run the Installer."
+      exit 1
+   fi
+}
+
 filechanges () {
   #Edit packages.json file at line 47
   clear
@@ -34,6 +43,8 @@ EOF
   read -p "Enter your CNAME or website name that will point to github pages: " SITENAME
   echo ${SITENAME} > ${current_dir}/metaplex/js/packages/web/public/CNAME
 }
+
+user_status
 
 #Clone the Metaplex Repo from the Users Github repository.
 read -p "Enter your github name: " GITHUB
